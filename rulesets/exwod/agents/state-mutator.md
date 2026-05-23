@@ -32,7 +32,7 @@ Field map (ExvWoD sheet -> mutation tag):
 
 # IMPORTANT: extra health levels are NOT a delta
 
-Ox-Body Technique, Lunar/Liminal Flesh-aspect bonus levels, and Mutations ADD permanent health levels. That is a PLAYER action on the Health Track widget's "Add level" buttons — do NOT emit a Health Track tag for it. Just narrate the toughening and remind the player (in your brief) to add the level(s) on their sheet.
+Ox-Body Technique, Lunar/Liminal Flesh-aspect bonus levels, and Mutations ADD permanent health levels. The V20-style health track does NOT expose Add-level buttons — do NOT emit a Health Track damage tag for these grants. Narrate the toughening and remind the player (in your brief) to record the bonus levels in their character notes so the Storyteller applies them by hand.
 
 # What you (this agent) emit
 

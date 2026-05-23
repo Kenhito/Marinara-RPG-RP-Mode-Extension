@@ -103,14 +103,13 @@ Charms you actually intend to use in the sheet's **Charms** flyout:
 ### Charms that add Health levels (Ox-Body etc.)
 
 Ox-Body Technique, Lunar/Liminal Flesh-aspect bonus levels, and
-Mutations permanently add health levels. The Health Track widget has
-**"Add level"** buttons (`-0 / -1 / -2`) and **"remove last"** — click to
-add the granted levels; they persist with the sheet separately from the
-base 7. **Caveat:** the buttons only emit `-0/-1/-2`. For a rare
-Crippled (`-5`) grant (e.g. the Infernal Ox-Body's one Crippled level),
-add a `-2` cell and note the true `-5` in the character notes, or have
-the Storyteller apply it by hand. This is a player action on the
-widget — it is NOT a `[mrrp-state:]` damage delta.
+Mutations permanently add health levels. ExWoD uses the V20-style
+health-track renderer (named Bruised/Hurt/.../Crippled/Incapacitated
+boxes with penalty pips), which mirrors Vampire's UX and does not
+expose Add-level buttons. Record the bonus levels and their penalties
+in the character notes section and have the Storyteller apply them by
+hand. This is a player/Storyteller bookkeeping action — it is NOT a
+`[mrrp-state:]` damage delta.
 
 ## Sanity check
 
@@ -121,9 +120,11 @@ In a fresh chat with the ruleset active:
 2. Pool 8, Difficulty 6, **Roll d10s** → `[dice: 8d10 vs 6 → N
    successes]` (successes = dice ≥ 6).
 3. Confirm the Resources cluster shows: Anima Banner (cycles
-   Dormant→Glimmering→Bonfire→Iconic), Essence counter, Motes bar with
-   an editable max, Willpower pool, and a 7-level Health Track with B/L/A
-   damage and Add-level buttons.
+   Dormant→Glimmering→Bonfire→Iconic), Essence counter, Motes bar
+   (cap driven by the Mote Pool stat), Willpower pool (cap driven by
+   Permanent Willpower), and a V20-style 7-level Health Track
+   (Bruised → Incapacitated, each box showing penalty pips, click to
+   cycle B/L/A damage).
 
 ## Updating / removing
 
