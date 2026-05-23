@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Pending the next published release.
 
+### Added — Exalted Versus World of Darkness reference ruleset (2026-05-23)
+
+- `rulesets/exwod/` — *Exalted Versus World of Darkness* (Revised), a fan crossover that runs Exalted-style Chosen on the WoD 20th-anniversary Storyteller chassis. Ships `ruleset.json` + `gm-agent.md` + `lorebook.json` (29 hand-authored entries: mechanics rules + per-Exalt-type overviews + player Charm-adding guidance) + five per-ruleset sub-agent overrides + `INSTALL.md`. Built `bundle.json` and `agents.json` included.
+- Mechanically a hybrid of the existing `vtmv20` chassis (V20 d10 dice-pool with botches, the Talents/Skills/Knowledges abilities trinity, V20 7-level health track) and the `exalted3e` Essence/Charm machinery (`commitmentModel: "mote"`, Charms with mote/Willpower cost parsing, `state-banner` Anima Banner, Intimacies in place of Humanity/Virtues, `exalted-health-track` custom renderer for Ox-Body extensibility).
+- ExvWoD-correct departures from both reference rulesets: difficulty caps at 9; 10s count as one success unless a Charm doubles; the "1s do not subtract on Caste/Aspect/Key Ability" exception is documented across the GM agent + lorebook; one fungible Mote pool (not Personal+Peripheral split) whose max is driven by a player-settable `Mote Pool` derived stat (range 1-20) mirroring how `Permanent Willpower` drives the Willpower pool; no Humanity/Frenzy/blood; no dice-bonus stunt tiers (ExvWoD stunts are "no penalty for flashy action, no bonus dice").
+- Supports all nine playable Exalt types (Solar, Lunar, Dragon-Blooded, Sidereal, Abyssal, Infernal, Alchemical, Liminal, Dragon Kings) on a type-agnostic sheet (`header.raceLabel: "Exalt Type"`, `header.classLabel: "Caste / Aspect"`); per-type detail lives in the lorebook so the sheet stays clean.
+- Validates against `schema/ruleset.schema.json` unmodified and against `validate-bundle.mjs`.
+
 ## [0.3.0] - 2026-05-22
 
 Canonical agent pool documented as the recommended path (the legacy five remain available — RP-mode users CAN toggle in Settings → Agents), three new per-system parallel-phase overlays land, two new reference rulesets (Blades in the Dark, Genesys), and the Vector 8 per-chat scenario-default install path closes. Non-breaking — companion to GM-mode v0.5.0 which took the more aggressive path (deleted legacy four, all `enabled:true`) because GM-mode has no per-agent toggle UI.
