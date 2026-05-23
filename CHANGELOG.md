@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Pending the next published release.
 
+### Added — Werewolf: The Apocalypse 20th Anniversary reference ruleset (2026-05-23)
+
+- `rulesets/w20/` — *Werewolf: The Apocalypse 20th Anniversary Edition* (W20, 2013 Onyx Path). Ships `ruleset.json` + `gm-agent.md` + `lorebook.json` (29 hand-authored entries: mechanics rules + per-Tribe / per-Auspice / per-Breed overviews + Triat / Litany lore + Adding-Gifts guidance) + five per-ruleset sub-agent overrides + `INSTALL.md`. Built `bundle.json` and `agents.json` included. Opts into `scenarioDefaultDerive`.
+- Built on the existing `vtmv20` Storyteller chassis (V20 d10 dice-pool, Talents/Skills/Knowledges trinity, V20 7-level health track, `v20-health-track` renderer). W20-specific differences vs vtmv20: Awareness replaced by **Primal-Urge** (Talent); Finance + Politics replaced by **Enigmas** + **Rituals** (Knowledges); standard 30-ability count preserved (10/10/10).
+- Three-pool economy modelled with the Permanent-X → pool pattern used in vtmv20/exwod: **Rage** (cap = Permanent Rage, set by Auspice 1-5), **Gnosis** (cap = Permanent Gnosis, set by Breed 1/3/5), **Willpower** (cap = Permanent Willpower, set by Tribe 3-4). All three formula-bound `{Permanent X}` for both `max` and `current`.
+- **Renown** as three permanent derived stats (Glory / Honour / Wisdom, 0-10) plus three Resources cluster counters for the temporary pool (`Temporary Glory / Honour / Wisdom`) that accumulate between Rites of Accomplishment. **Rank** as a manual 0-6 derived stat.
+- **Form** as a state-banner in Resources (Homid / Glabro / Crinos / Hispo / Lupus); per-form Attribute modifiers documented in the GM agent and lorebook for narration to apply.
+- **Frenzy State** (Calm / Rising / Berserk / Fox / Thrall of the Wyrm), **Harano** (None / Touched / Deep), **Spirit World** (Material / Penumbra / Deep Umbra) as `states[]` for state-mutator agents.
+- Validates against `schema/ruleset.schema.json` unmodified.
+
 ## [0.3.0] - 2026-05-22
 
 Canonical agent pool documented as the recommended path (the legacy five remain available — RP-mode users CAN toggle in Settings → Agents), three new per-system parallel-phase overlays land, two new reference rulesets (Blades in the Dark, Genesys), and the Vector 8 per-chat scenario-default install path closes. Non-breaking — companion to GM-mode v0.5.0 which took the more aggressive path (deleted legacy four, all `enabled:true`) because GM-mode has no per-agent toggle UI.
