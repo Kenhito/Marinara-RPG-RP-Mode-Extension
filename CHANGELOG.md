@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Pending the next published release.
 
+### Fixed — character-bundle export/import round-trip (2026-05-31)
+
+- `collectBundle()` and `applyBundle()` in `extension/RPG-Extension-RP-Mode.js` were still reading/writing the **legacy chat-scoped** sheet localStorage key (`sheetKey(chatId, charId)`), missed by the v0.2.1 migration that moved authoritative sheet storage to the chat-independent `characterKey(charId)`. Symptom: exported bundles silently shipped with `sheets: {}` for every character (only `characters`/`activeCharacterId` metadata exported), and re-imports appeared to succeed but loaded blank sheets — the buttons in the sheet header were effectively broken since v0.2.1.
+- Fix: read from `characterKey(c.id)` first (with a legacy `sheetKey` fallback for any character whose data has never been touched since v0.2.1, so unmigrated entries still export), and write the imported sheets back to `characterKey(c.id)` so `loadSheet` actually finds them. Wipe path also covers both keys symmetrically so legacy data doesn't resurface via the auto-migration fallback after an import.
+- No schema change — the exported JSON shape (`mrrp-character-bundle` v1) is unchanged.
+
 ## [0.3.0] - 2026-05-22
 
 Canonical agent pool documented as the recommended path (the legacy five remain available — RP-mode users CAN toggle in Settings → Agents), three new per-system parallel-phase overlays land, two new reference rulesets (Blades in the Dark, Genesys), and the Vector 8 per-chat scenario-default install path closes. Non-breaking — companion to GM-mode v0.5.0 which took the more aggressive path (deleted legacy four, all `enabled:true`) because GM-mode has no per-agent toggle UI.
