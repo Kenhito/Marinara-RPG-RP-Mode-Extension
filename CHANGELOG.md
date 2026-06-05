@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Pending the next published release.
 
+### Fixed — `parametersSchema` rejected by the host validator
+
+- `tools/build-custom-tools.mjs` previously shipped `parametersSchema: {}` for the static reference tool baked into every ruleset bundle. Current Marinara host builds reject that with:
+  `[tools] Skipping custom tool "<id>_reference" with invalid parameter schema: parametersSchema must define root "type": "object" or include object "properties" {}`
+  The shipped tool was silently dropped on install, so the reference tool never reached the model.
+- The generator now emits `parametersSchema: { type: "object", properties: {} }` — semantically "no parameters" with the explicit JSON Schema shape the validator expects. Every bundle in `rulesets/*/bundle.json` has been rebuilt to pick up the fix.
+
 ## [0.3.0] - 2026-05-22
 
 Canonical agent pool documented as the recommended path (the legacy five remain available — RP-mode users CAN toggle in Settings → Agents), three new per-system parallel-phase overlays land, two new reference rulesets (Blades in the Dark, Genesys), and the Vector 8 per-chat scenario-default install path closes. Non-breaking — companion to GM-mode v0.5.0 which took the more aggressive path (deleted legacy four, all `enabled:true`) because GM-mode has no per-agent toggle UI.
