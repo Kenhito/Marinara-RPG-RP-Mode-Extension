@@ -15,6 +15,13 @@ Pending the next published release.
   `[tools] Skipping custom tool "<id>_reference" with invalid parameter schema: parametersSchema must define root "type": "object" or include object "properties" {}`
   The shipped tool was silently dropped on install, so the reference tool never reached the model.
 - The generator now emits `parametersSchema: { type: "object", properties: {} }` — semantically "no parameters" with the explicit JSON Schema shape the validator expects. Every bundle in `rulesets/*/bundle.json` has been rebuilt to pick up the fix.
+### Added — Exalted Versus World of Darkness reference ruleset (2026-05-23)
+
+- `rulesets/exwod/` — *Exalted Versus World of Darkness* (Revised), a fan crossover that runs Exalted-style Chosen on the WoD 20th-anniversary Storyteller chassis. Ships `ruleset.json` + `gm-agent.md` + `lorebook.json` (29 hand-authored entries: mechanics rules + per-Exalt-type overviews + player Charm-adding guidance) + five per-ruleset sub-agent overrides + `INSTALL.md`. Built `bundle.json` and `agents.json` included.
+- Mechanically a hybrid of the existing `vtmv20` chassis (V20 d10 dice-pool with botches, the Talents/Skills/Knowledges abilities trinity, V20 7-level health track) and the `exalted3e` Essence/Charm machinery (`commitmentModel: "mote"`, Charms with mote/Willpower cost parsing, `state-banner` Anima Banner, Intimacies in place of Humanity/Virtues, `exalted-health-track` custom renderer for Ox-Body extensibility).
+- ExvWoD-correct departures from both reference rulesets: difficulty caps at 9; 10s count as one success unless a Charm doubles; the "1s do not subtract on Caste/Aspect/Key Ability" exception is documented across the GM agent + lorebook; one fungible Mote pool (not Personal+Peripheral split) whose max is driven by a player-settable `Mote Pool` derived stat (range 1-20) mirroring how `Permanent Willpower` drives the Willpower pool; no Humanity/Frenzy/blood; no dice-bonus stunt tiers (ExvWoD stunts are "no penalty for flashy action, no bonus dice").
+- Supports all nine playable Exalt types (Solar, Lunar, Dragon-Blooded, Sidereal, Abyssal, Infernal, Alchemical, Liminal, Dragon Kings) on a type-agnostic sheet (`header.raceLabel: "Exalt Type"`, `header.classLabel: "Caste / Aspect"`); per-type detail lives in the lorebook so the sheet stays clean.
+- Validates against `schema/ruleset.schema.json` unmodified and against `validate-bundle.mjs`.
 
 ## [0.3.0] - 2026-05-22
 
