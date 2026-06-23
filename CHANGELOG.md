@@ -31,6 +31,11 @@ Pending the next published release.
 - **Form** as a state-banner in Resources (Homid / Glabro / Crinos / Hispo / Lupus); per-form Attribute modifiers documented in the GM agent and lorebook for narration to apply.
 - **Frenzy State** (Calm / Rising / Berserk / Fox / Thrall of the Wyrm), **Harano** (None / Touched / Deep), **Spirit World** (Material / Penumbra / Deep Umbra) as `states[]` for state-mutator agents.
 - Validates against `schema/ruleset.schema.json` unmodified.
+### Fixed — character-bundle export/import round-trip (2026-05-31)
+
+- `collectBundle()` and `applyBundle()` in `extension/RPG-Extension-RP-Mode.js` were still reading/writing the **legacy chat-scoped** sheet localStorage key (`sheetKey(chatId, charId)`), missed by the v0.2.1 migration that moved authoritative sheet storage to the chat-independent `characterKey(charId)`. Symptom: exported bundles silently shipped with `sheets: {}` for every character (only `characters`/`activeCharacterId` metadata exported), and re-imports appeared to succeed but loaded blank sheets — the buttons in the sheet header were effectively broken since v0.2.1.
+- Fix: read from `characterKey(c.id)` first (with a legacy `sheetKey` fallback for any character whose data has never been touched since v0.2.1, so unmigrated entries still export), and write the imported sheets back to `characterKey(c.id)` so `loadSheet` actually finds them. Wipe path also covers both keys symmetrically so legacy data doesn't resurface via the auto-migration fallback after an import.
+- No schema change — the exported JSON shape (`mrrp-character-bundle` v1) is unchanged.
 
 ## [0.3.0] - 2026-05-22
 
